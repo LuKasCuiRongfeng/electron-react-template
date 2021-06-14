@@ -1,11 +1,11 @@
-const { app, BrowserWindow, ipcMain } = require('electron')
-const { toggleWin, sendMsg } = require('./window')
-const { join } = require('path')
+import { app, BrowserWindow, ipcMain } from 'electron'
+import { toggleWin, sendMsg } from './window'
+import { join } from 'path'
 
 global.wins = {}
 
 const baseUrl = app.isPackaged
-? join(__dirname, "../../dist/index.html/#")
+? join(__dirname, "../../dist/render/index.html#")
 : "http://localhost:3000/#"
 
 global.baseUrl = baseUrl

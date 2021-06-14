@@ -1,4 +1,4 @@
-const { BrowserWindow, dialog } = require('electron')
+import { BrowserWindow, dialog } from 'electron'
 
 // 创建新窗口时的默认配置
 const defaultWinOpts = {
@@ -59,7 +59,7 @@ function sendMsg(key, action) {
   }
 }
 
-module.exports = {
+export {
   toggleWin,
   sendMsg
 }
