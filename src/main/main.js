@@ -1,5 +1,5 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
-const { toogleWin, sendMsg } = require('./window')
+const { toggleWin, sendMsg } = require('./window')
 const { join } = require('path')
 
 global.wins = {}
@@ -29,6 +29,11 @@ function createWindow () {
   // Open the DevTools.
   win.webContents.openDevTools()
   global.wins["main"] = win
+  win.on("closed", () => {
+    if (process.platform !== 'darwin') {
+      app.quit()
+    }
+  })
 }
 
 // This method will be called when Electron has finished
@@ -57,12 +62,12 @@ app.on('activate', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-ipcMain.on("toogleWin", (e, arg) => {
+ipcMain.on("toggleWin", (e, arg) => {
   const { key = "", type = "open", opts = {} } = arg
-  toogleWin(key, type, opts)
+  toggleWin(key, type, opts)
 })
 
-ipcMain.on("send-msg", (e, arg) => {
-  const { key, data } = arg
-  sendMsg(key, data)
+ipcMain.on("send-msg", (e, data) => {
+  const { key, action } = data
+  sendMsg(key, action)
 })
