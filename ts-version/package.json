@@ -1,0 +1,80 @@
+{
+  "name": "crf-ts-app",
+  "version": "0.0.0",
+  "description": "this is the electron ts template",
+  "author": "crf 2067380264@qq.com",
+  "main": "dist/main/main.js",
+  "productName": "crf app",
+  "scripts": {
+    "start": "concurrently \"npm run dev\" \"npm run electron\"",
+    "dev": "vite",
+    "electron": "wait-on tcp:3000 && electron .",
+    "build:vite": "vue-tsc --noEmit && vite build",
+    "build": "rimraf dist && npm run build:vite && rollup -c && electron-builder",
+    "serve": "vite preview"
+  },
+  "build": {
+    "appId": "2067380264@qq.com",
+    "productName": "electron-template",
+    "copyright": "Copyright @ 2021 ${author}",
+    "asar": false,
+    "directories": {
+      "output": "release/vite${version}"
+    },
+    "files": [
+      "!node_modules",
+      "dist/**"
+    ],
+    "extraResources": {
+      "from": "src/preload",
+      "to": "app/src/preload"
+    },
+    "mac": {
+      "artifactName": "${productName}-V-${version}.${ext}",
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "${productName}-V-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": false
+    }
+  },
+  "dependencies": {
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
+  },
+  "devDependencies": {
+    "@reduxjs/toolkit": "^1.6.0",
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "@rollup/plugin-typescript": "^8.2.1",
+    "@vitejs/plugin-react-refresh": "^1.3.1",
+    "concurrently": "^6.2.0",
+    "electron": "^13.1.2",
+    "electron-builder": "^22.11.7",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.1.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.51.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.2",
+    "vite": "^2.3.7",
+    "wait-on": "^5.3.0"
+  }
+}
