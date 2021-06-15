@@ -4,6 +4,7 @@ import { join } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  root: join(__dirname, "src/render/mainPage"),
   plugins: [reactRefresh()],
   base: "./",
   build: {

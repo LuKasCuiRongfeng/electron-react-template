@@ -14,9 +14,9 @@
     "electron": "wait-on tcp:3000 && electron ."
   },
   "build": {
-    "appId": "com.electorn.crf",
-    "productName": "fuck-yuanxue",
-    "copyright": "Copyright @ year ${author}",
+    "appId": "2067380264@qq.com",
+    "productName": "electron-template",
+    "copyright": "Copyright @ 2021 ${author}",
     "asar": false,
     "directories": {
       "output": "release/vite${version}"
@@ -30,7 +30,7 @@
       "to": "app/src/preload"
     },
     "mac": {
-      "artifactName": "${productName}_${version}.${ext}",
+      "artifactName": "${productName}-V-${version}.${ext}",
       "target": [
         "dmg"
       ]
@@ -44,7 +44,7 @@
           ]
         }
       ],
-      "artifactName": "${productName}_${version}.${ext}"
+      "artifactName": "${productName}-V-${version}.${ext}"
     },
     "nsis": {
       "oneClick": false,
@@ -61,8 +61,12 @@
     "@reduxjs/toolkit": "^1.6.0",
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
+    "@rollup/plugin-typescript": "^8.2.1",
+    "@types/react-dom": "^17.0.7",
+    "@types/react-router-dom": "^5.1.7",
     "@vitejs/plugin-react-refresh": "^1.3.1",
     "concurrently": "^6.2.0",
+    "dotenv": "^10.0.0",
     "electron": "^13.1.2",
     "electron-builder": "^22.11.7",
     "react-redux": "^7.2.4",
@@ -70,7 +74,11 @@
     "redux": "^4.1.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.51.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.2",
     "vite": "^2.3.7",
+    "vue-tsc": "^0.1.7",
     "wait-on": "^5.3.0"
   }
 }

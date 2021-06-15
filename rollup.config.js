@@ -1,5 +1,6 @@
 import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
+import { terser } from 'rollup-plugin-terser'
 import { join } from 'path'
 
 export default {
@@ -7,7 +8,7 @@ export default {
     output: {
         file: join(__dirname, "dist/main/main.js"),
         format: "cjs",
-        sourcemap: true
+        plugins: [terser()]
     },
     plugins: [nodeResolve(), commonjs()],
     external: ["electron"]

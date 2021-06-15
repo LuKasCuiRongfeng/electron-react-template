@@ -5,12 +5,12 @@ import { join } from 'path'
 global.wins = {}
 
 const baseUrl = app.isPackaged
-? join(__dirname, "../../dist/render/index.html#")
-: "http://localhost:3000/#"
+  ? join(__dirname, "../../dist/render/index.html#")
+  : "http://localhost:3000/#"
 
 global.baseUrl = baseUrl
 
-function createWindow () {
+function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
     width: 800,
@@ -27,7 +27,7 @@ function createWindow () {
   win.loadURL(global.baseUrl);
 
   // Open the DevTools.
-  win.webContents.openDevTools()
+  app.isPackaged && win.webContents.openDevTools()
   global.wins["main"] = win
   win.on("closed", () => {
     if (process.platform !== 'darwin') {
@@ -53,7 +53,7 @@ app.on('window-all-closed', () => {
 app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
-  
+
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow()
   }

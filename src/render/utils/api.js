@@ -1,6 +1,5 @@
 const electron = require('electron')
-const { ipcRenderer, remote } = electron
-const { dialog } = remote
+const { ipcRenderer } = electron
 import store from '../../modal'
 
 // 监听窗口间传值

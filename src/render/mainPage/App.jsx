@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import logo from './logo.svg'
 import './App.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { increment } from './modal/app'
-import { toggleWin, sendMsg } from './render/utils/api'
+import { toggleWin, sendMsg } from '../utils/api'
 
 function App() {
   const app = useSelector(state => state.app)

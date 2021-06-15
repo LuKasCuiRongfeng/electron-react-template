@@ -2,10 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
-import About from './render/pages/About'
+import About from '../pages/About'
 import { HashRouter, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import store from './modal'
+import store from '../../modal'
 
 ReactDOM.render(
   <React.StrictMode>

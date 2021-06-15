@@ -1,4 +1,4 @@
-import { BrowserWindow, dialog } from 'electron'
+import { app, BrowserWindow, dialog } from 'electron'
 
 // 创建新窗口时的默认配置
 const defaultWinOpts = {
@@ -34,7 +34,7 @@ function toggleWin(key, type, opts) {
       } else {
         win = new BrowserWindow({ ...defaultWinOpts, ...opts })
         win.loadURL(`${global.baseUrl}/${key}`)
-        win.webContents.openDevTools()
+        app.isPackaged && win.webContents.openDevTools()
         // 保存在global.wins里
         global.wins[key] = win
         win.on("closed", () => {
